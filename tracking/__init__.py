@@ -5,6 +5,8 @@ from typing import Union, Tuple, List
 from . import exceptions
 
 from .constants import CONFIG
+from .enums import FingerEnum as finger
+from .enums import SideEnum as side
 from .enums import TypeEnum as type
 from .webcam import WebCam
 
