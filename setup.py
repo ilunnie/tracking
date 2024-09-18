@@ -7,6 +7,10 @@ setup(
     description='Monitor a person\'s body with just a webcam',
     author='ilunnie & marcoshrb',
     url='https://github.com/ilunnie/tracking',
+    install_requires=[
+        'mediapipe',
+        'opencv-python'
+    ],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
