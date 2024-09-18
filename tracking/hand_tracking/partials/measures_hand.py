@@ -15,6 +15,6 @@ class MeasuresMethods(HandAbstract):
         return sum(sizes)
     
     def center_palm(self) -> tuple:
-        indexes = self.indexes.HAND_PALM
+        indexes = self.indexes.HAND_PALM.value
         points = self.landmarks.get_points(indexes)
         return math.center(points)
