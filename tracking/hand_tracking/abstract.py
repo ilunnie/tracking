@@ -1,3 +1,5 @@
+import numpy as np
+
 from abc import ABC, abstractmethod
 
 from .constants import HandIndexes
@@ -32,4 +34,8 @@ class HandAbstract(ABC):
     
     @abstractmethod
     def finger_is_raised(self, finger: FingerEnum, threshold: float = .7) -> bool:
+        pass
+
+    @abstractmethod
+    def draw(self, image: np.ndarray, *args, **kwargs):
         pass
