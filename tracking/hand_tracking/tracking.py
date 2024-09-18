@@ -42,7 +42,7 @@ class Tracking:
         hands = self.handsmesh.process(image)
         if hands.multi_hand_landmarks:
             Result = namedtuple('hand', ['classification', 'landmarks', 'image'])
-            return [Result(classification=hand,
+            return [Result(classification=hand.classification[0],
                            landmarks=marks.landmark,
                            image=image)
                     for hand, marks
