@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='tracking',
-    version='0.1.0',
+    version='1.1.0',
     packages=find_packages(),
     description='Monitor a person\'s body with just a webcam',
     author='ilunnie & marcoshrb',
@@ -11,6 +11,9 @@ setup(
         'mediapipe',
         'opencv-python'
     ],
+    extras_require={
+        'tests': ['pytest', 'pytest-cov']
+    },
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
