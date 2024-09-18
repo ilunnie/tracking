@@ -15,11 +15,11 @@ class FingerEnum(Enum):
         return HandIndexes[f"HAND_{name}_TIP"].value
 
     @classmethod
-    def get_points(cls, finger: 'FingerEnum') -> set:
+    def get_points(cls, finger: 'FingerEnum') -> tuple:
         name = finger.name if finger == cls.THUMB else finger.name + "_FINGER"
         return HandIndexes[f"HAND_{name}"].value
     
     @classmethod
-    def get_connections(cls, finger: 'FingerEnum') -> tuple:
+    def get_connections(cls, finger: 'FingerEnum') -> set:
         name = finger.name if finger == cls.THUMB else finger.name + "_FINGER"
         return  HandIndexes[f"HAND_{name}_CONNECTIONS"].value
