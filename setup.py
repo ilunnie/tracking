@@ -5,14 +5,18 @@ setup(
     version='1.1.0',
     packages=find_packages(),
     description='Monitor a person\'s body with just a webcam',
+    long_description_content_type='text/markdown',
     author='ilunnie & marcoshrb',
     url='https://github.com/ilunnie/tracking',
-    install_requires=[
-        'mediapipe',
-        'opencv-python'
-    ],
-    extras_require={
-        'tests': ['pytest', 'pytest-cov']
+    requires={
+        'install': [
+            'mediapipe',
+            'numpy',
+            'opencv_contrib_python'
+        ],
+        'extras': {
+            'tests': ['pytest', 'pytest-cov']
+            }
     },
     classifiers=[
         'Development Status :: 3 - Alpha',
