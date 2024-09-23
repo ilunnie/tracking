@@ -33,7 +33,7 @@ class Tracking:
                                                      min_hand_detection_confidence=min_hand_detection_confidence,
                                                      min_hand_presence_confidence=min_hand_presence_confidence,
                                                      min_tracking_confidence=min_tracking_confidence,
-                                                     result_callback=self.callback)
+                                                     result_callback=(self.callback if running_mode == RunningModeEnum.LIVE_STREAM else None))
         self.handsmesh = HandLandmarker.create_from_options(options)
         self.__running_mode = running_mode
         self.__timestamp = 0
@@ -75,12 +75,7 @@ class Tracking:
         self.__image = image
 
         self.__callback.clear()
-        if self.__running_mode == RunningModeEnum.IMAGE:
-            self.handsmesh.detect(mp_image)
-        elif self.__running_mode == RunningModeEnum.VIDEO:
-            self.__timestamp += 1
-            self.handsmesh.detect_for_video(mp_image, self.__timestamp)
-        else:
+        if self.__running_mode == RunningModeEnum.LIVE_STREAM:
             if self.__lastupdate:
                 now = datetime.now()
                 self.__timestamp += int((now - self.__lastupdate).total_seconds() * 1000)
@@ -89,6 +84,14 @@ class Tracking:
                 self.__timestamp = 0
                 self.__lastupdate = datetime.now()
             self.handsmesh.detect_async(mp_image, self.__timestamp)
+        else:
+            if self.__running_mode == RunningModeEnum.IMAGE:
+                result = self.handsmesh.detect(mp_image)
+            else:
+                self.__timestamp += 1
+                result = self.handsmesh.detect_for_video(mp_image, self.__timestamp)
+                
+            self.callback(result, mp_image, self.__timestamp)
             
         self.__callback.wait()
         return self.__result

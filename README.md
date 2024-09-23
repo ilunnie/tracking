@@ -27,7 +27,7 @@ image = cv2.imread('path/to/image.jpg')
 hand_tck = Tracking()
 
 # Busca todas as mãos na imagem
-hands = hand_tck.predict(image)
+hands = hand_tck.predict(cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
 for hand in hands:
     hand.draw(image, (255, 0, 0)) # Desenha todas as mãos encontradas
 
