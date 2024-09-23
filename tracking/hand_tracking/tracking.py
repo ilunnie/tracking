@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 import mediapipe as mp
 
@@ -71,6 +72,7 @@ class Tracking:
     def process(self, image: Optional[np.ndarray] = None) -> List[NamedTuple]:
         if image is None:
             _, image = CONFIG.VIDEO_CAPTURE.read()
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image)
         self.__image = image
 

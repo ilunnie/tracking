@@ -41,13 +41,12 @@ Desenhando cada dedo separadamente e detectando quais dedos estão levantados
 import cv2
 import tracking as tck
 
-
 # 1° parametro: Define o tamanho da tela
 # 2° parametro: Define a webcam que será usada
 # 3° parametro: Define quais tipos de tracking deve carregar os modulos
 tck.init((1920, 1080), 0, flags=tck.type.HAND_TRACKING)
 
-hand_tck = tck.HandTracking() # Instancia a classe de tracking de mãos
+hand_tck = tck.HandTracking(tck.running_mode.LIVE_STREAM) # Instancia a classe de tracking de mãos
 cap = tck.CONFIG.VIDEO_CAPTURE # Referencia para a webcam
 
 # Enquanto webcam estiver aberta
@@ -61,7 +60,7 @@ while cap.isOpened:
     for hand in hands:
         for finger in tck.finger:
             # Cor azul caso o dedo estiver levantado, senão, cor vermelha
-            color = (0, 0, 255) if hand.finger_is_raised(finger) else (255, 0, 0)
+            color = (255, 0, 0) if hand.finger_is_raised(finger) else (0, 0, 255)
             # Desenha apenas o dedo atual do loop
             hand.draw(frame, color, palm=False, fingers=[finger])
 
