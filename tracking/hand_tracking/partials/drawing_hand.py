@@ -12,7 +12,7 @@ class DrawingHand(HandAbstract):
     def draw(self,
              image: np.ndarray,
              color: Tuple[int, int, int],
-             point_scale:Tuple[int, int] = (10, 75),
+             point_scale:Tuple[int, int] = (5, 50),
              connections: bool = True,
              thickness: int = 2,
              inplace: bool = True,

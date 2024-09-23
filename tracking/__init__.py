@@ -4,13 +4,14 @@ from typing import Union, Tuple, List
 
 from . import exceptions
 
-from .constants import CONFIG
+from .config import Config
 from .enums import FingerEnum as finger
 from .enums import SideEnum as side
 from .enums import TypeEnum as type
+from .enums import RunningModeEnum as running_mode
 from .webcam import WebCam
 
-HandTracking = None
+CONFIG = Config()
 
 def init(
         screen_size: Union[Tuple[int, int], List[int]],
