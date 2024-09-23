@@ -2,21 +2,24 @@ from setuptools import setup, find_packages
 
 setup(
     name='tracking',
-    version='1.2.0',
-    packages=find_packages(),
+    version='1.2.1',
+    packages=find_packages(include=['tracking', 'tracking.*']),
+    include_package_data=True,
+    package_data={
+        '': ['tasks/*']
+    },
     description='Monitor a person\'s body with just a webcam',
+    long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author='ilunnie & marcoshrb',
     url='https://github.com/ilunnie/tracking',
-    requires={
-        'install': [
-            'mediapipe',
-            'numpy',
-            'opencv_python'
-        ],
-        'extras': {
-            'tests': ['pytest', 'pytest-cov']
-            }
+    install_requires=[
+        'mediapipe',
+        'numpy',
+        'opencv_python'
+    ],
+    extras_require={
+        'tests': ['pytest', 'pytest-cov']
     },
     classifiers=[
         'Development Status :: 3 - Alpha',
