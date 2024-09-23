@@ -46,7 +46,9 @@ import tracking as tck
 # 3° parametro: Define quais tipos de tracking deve carregar os modulos
 tck.init((1920, 1080), 0, flags=tck.type.HAND_TRACKING)
 
-hand_tck = tck.HandTracking(tck.running_mode.LIVE_STREAM) # Instancia a classe de tracking de mãos
+# Instancia a classe de tracking de mãos
+hand_tck = tck.HandTracking(tck.running_mode.LIVE_STREAM,   # running_mode = LIVE_STREAM para rastrear de forma assincrona
+                            max_num_hands=2)                # max_num_hands = 2 Para rastrear até duas mãos ao mesmo tempo
 cap = tck.CONFIG.VIDEO_CAPTURE # Referencia para a webcam
 
 # Enquanto webcam estiver aberta
