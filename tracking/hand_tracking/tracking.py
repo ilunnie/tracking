@@ -1,11 +1,13 @@
 import cv2
-import numpy as np
 import mediapipe as mp
+import numpy as np
+import os
+import pkg_resources
 
 from collections import namedtuple
 from datetime import datetime
 from threading import Event
-from typing import Callable, List, NamedTuple, Optional
+from typing import Callable, List, Optional
 
 from . import BaseOptions, HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult
 from .hand import Hand
@@ -25,9 +27,13 @@ class Tracking:
                      Callable[[
                          List[Hand],
                          mp.Image,
-                         int], None]] = None) -> None:
+                         int], None]] = None,
+                 task_path:str = None) -> None:
         
-        base_options = BaseOptions(model_asset_path='./tasks/hand_landmarker.task')
+        if task_path is None:
+            task_path = pkg_resources.resource_filename(__name__, '')
+            task_path = os.path.join(os.path.dirname(task_path), "tasks", "hand_landmarker.task")
+        base_options = BaseOptions(model_asset_path=task_path)
         options = HandLandmarkerOptions(base_options=base_options,
                                                      running_mode=running_mode,
                                                      num_hands=max_num_hands,

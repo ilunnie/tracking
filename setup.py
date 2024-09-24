@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='tracking',
-    version='1.2.1',
+    name='tracking-py',
+    version='1.0.2',
     packages=find_packages(include=['tracking', 'tracking.*']),
     include_package_data=True,
     package_data={
-        '': ['tasks/*']
+        'tracking': ['tasks/*'],
     },
     description='Monitor a person\'s body with just a webcam',
     long_description=open('README.md').read(),
