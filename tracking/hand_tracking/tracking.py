@@ -29,12 +29,12 @@ class Tracking:
         
         base_options = BaseOptions(model_asset_path='./tasks/hand_landmarker.task')
         options = HandLandmarkerOptions(base_options=base_options,
-                                                     running_mode=running_mode,
-                                                     num_hands=max_num_hands,
-                                                     min_hand_detection_confidence=min_hand_detection_confidence,
-                                                     min_hand_presence_confidence=min_hand_presence_confidence,
-                                                     min_tracking_confidence=min_tracking_confidence,
-                                                     result_callback=(self.callback if running_mode == RunningModeEnum.LIVE_STREAM else None))
+                                        running_mode=running_mode,
+                                        num_hands=max_num_hands,
+                                        min_hand_detection_confidence=min_hand_detection_confidence,
+                                        min_hand_presence_confidence=min_hand_presence_confidence,
+                                        min_tracking_confidence=min_tracking_confidence,
+                                        result_callback=(self.callback if running_mode == RunningModeEnum.LIVE_STREAM else None))
         self.handsmesh = HandLandmarker.create_from_options(options)
         self.__running_mode = running_mode
         self.__timestamp = 0

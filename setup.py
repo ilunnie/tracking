@@ -1,9 +1,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='tracking',
-    version='1.2.0',
-    packages=find_packages(),
+    name='tracking-py',
+    version='1.1.0',
+    packages=find_packages(include=['tracking', 'tracking.*']),
+    include_package_data=True,
+    package_data={
+        'tracking': ['tasks/*'],
+    },
     description='Monitor a person\'s body with just a webcam',
     long_description_content_type='text/markdown',
     author='ilunnie & marcoshrb',
