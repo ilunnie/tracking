@@ -1,4 +1,3 @@
-import numpy as np
 from ..abstract import HandAbstract
 
 from ...enums import FingerEnum
