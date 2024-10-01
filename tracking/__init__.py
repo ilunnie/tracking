@@ -27,7 +27,10 @@ def init(
         if value == 0:
             raise NotImplementedError('Eye tracking not implemented')
         elif value == 1:
-            raise NotImplementedError('Face tracking not implemented')
+            from .face_tracking import Tracking as FaceTrackingClass
+            
+            global FaceTracking
+            FaceTracking = FaceTrackingClass
         elif value == 2:
             from .hand_tracking import Tracking as HandTrackingClass
             
