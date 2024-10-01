@@ -16,7 +16,8 @@ setup(
     install_requires=[
         'mediapipe',
         'numpy',
-        'opencv_python'
+        'opencv_python',
+        'setup_tools'
     ],
     extras_require={
         'tests': ['pytest', 'pytest-cov']
