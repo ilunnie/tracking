@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='tracking-py',
-    version='1.0.2',
+    version='1.1.0',
     packages=find_packages(include=['tracking', 'tracking.*']),
     include_package_data=True,
     package_data={
@@ -16,7 +16,8 @@ setup(
     install_requires=[
         'mediapipe',
         'numpy',
-        'opencv_python'
+        'opencv_python',
+        'setuptools'
     ],
     extras_require={
         'tests': ['pytest', 'pytest-cov']

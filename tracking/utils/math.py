@@ -12,6 +12,14 @@ class Math:
         distance = np.sum([(a[i] - b[i]) ** 2 for i in range(len(a))])
         return math.sqrt(distance)
     
+    @staticmethod
+    def direction(a, b) -> tuple:
+        dir = [b - a for a, b in zip(a, b)]
+        mag = math.sqrt(sum([d ** 2 for d in dir]))
+        if mag == 0:
+            return tuple(0 for _ in dir)
+        return tuple(d / mag for d in dir)
+    
 for name, attr in [
         (name, getattr(math, name)) 
         for name in dir(math) 

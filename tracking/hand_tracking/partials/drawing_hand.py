@@ -8,7 +8,7 @@ from ..abstract import HandAbstract
 from ...enums import FingerEnum
 from ...utils import normalize_pixel
 
-class DrawingHand(HandAbstract):
+class DrawingMethods(HandAbstract):
     def draw(self,
              image: np.ndarray,
              color: Tuple[int, int, int],
