@@ -29,13 +29,16 @@ class DrawingMethods(FaceAbstract):
                 pt1 = normalize_pixel(*pt1[:2], width, height)
                 pt2 = normalize_pixel(*pt2[:2], width, height)
                 
-                cv2.line(image, pt1, pt2, color, thickness)
+                if pt1 and pt2:
+                    cv2.line(image, pt1, pt2, color, thickness)
             else:
                 pts = self.landmarks.get_points([index])
                 
             if points:
                 for point in pts:
                     pt = normalize_pixel(point[0], point[1], width, height)
+                    if pt is None:
+                        continue
                     norm = min(max((point[2] + 1), 0), 1)
                     radius = int(point_scale[0] + ((1 - norm) * (point_scale[1] - point_scale[0])))
                     image = cv2.circle(image, pt, radius, color, -1)
@@ -66,15 +69,18 @@ class DrawingMethods(FaceAbstract):
                 pt1 = normalize_pixel(*pt1[:2], width, height)
                 pt2 = normalize_pixel(*pt2[:2], width, height)
                 
-                cv2.line(image, pt1, pt2, color, thickness)
+                if pt1 and pt2:
+                    cv2.line(image, pt1, pt2, color, thickness)
             else:
                 pts = self.landmarks.get_points([index])
                 
             if points:
                 for point in pts:
                     pt = normalize_pixel(point[0], point[1], width, height)
+                    if pt is None:
+                        continue
                     norm = min(max((point[2] + 1), 0), 1)
                     radius = int(point_scale[0] + ((1 - norm) * (point_scale[1] - point_scale[0])))
-                    image = cv2.circle(image, pt, radius, color, -1)
+                    cv2.circle(image, pt, radius, color, -1)
                     
         return image

@@ -1,2 +1,2 @@
 from .drawing import *
-from .math import Math as math
+from ..utils import math
